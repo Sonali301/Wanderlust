@@ -25,6 +25,18 @@ const listingSchema = new Schema({
         type : Schema.Types.ObjectId,
         ref : "User", // user because owner should be loggoed in or signed up
     },
+
+    // geometry: {
+    //     type: {
+    //         type: String,
+    //         enum: ['Point'],
+    //         required: true
+    //     },
+    //     coordinates: {
+    //         type: [Number], // [longitude, latitude]
+    //         required: true
+    //     }
+    // }
 });
 
 // post Mongoose middleware

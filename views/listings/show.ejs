@@ -15,7 +15,6 @@
                     <p class="card-text"><%= listing.location %> </p>
                     <p class="card-text"><%= listing.country %> </p>
                     
-                
             </div>
         </div>
 
@@ -32,8 +31,9 @@
 
         
         <div class="col-8 offset-3 mb-3">
-            <hr>
+           
             <% if(currUser) { %>
+            <hr>
             <h4>Leave a review</h4>
             <form action="/listings/<%= listing.id %>/reviews" method="POST" novalidate class="needs-validation">
               
@@ -65,8 +65,9 @@
             <hr>
             <% } %>
 
-            <p><b>All Reviews</b></p>
+            <% if(listing.reviews.length > 0)  { %>
             <div class="row ">
+                <p><b>All Reviews</b></p>
             
             <% for(review of listing.reviews) { %>
                 <div class="card col-5 ms-3 mb-3 ">
@@ -84,15 +85,23 @@
                 </div>
             <% } %>
             </div>
-
-            <!-- <div class="col-8 offset-3 mb-3">
-                <h3>Where you'll be</h3>
-                <div id="map"></div>
-
-            </div> -->
-            
-
+            <% } %>
         </div>
+
+        <div class="col-6 offset-3 mb-3">
+            <h3>Where you'll be</h3>
+            <div id="map"></div>
+
+        </div> 
 </div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="/js/map.js"></script>
+<script>
+    // Call function to display location on the map
+    var locationName = "<%= listing.location %>";
+    showMap(locationName);
+</script>
+
 
 
